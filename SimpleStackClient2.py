@@ -4,7 +4,7 @@ from SimpleStack import *
 
 def main():
     # create a new stack instance (assuming the class is named 'Stack')
-    maxSize = 20
+    maxSize = 10
     stack = Stack(maxSize)
     print("Created a new stack.")
 
