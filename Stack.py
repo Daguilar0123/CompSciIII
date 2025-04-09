@@ -1,5 +1,5 @@
 class Stack():
-    def __init_(self):
+    def __init__(self):
         self.stack = []
     def pop(self):
         if not self.isEmpty():
