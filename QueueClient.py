@@ -11,5 +11,5 @@ print('Is queue full?', queue.isFull())
 
 print('Removing items from the queue:')
 while not queue.isEmpty():
-    print(queue.remove(), end='')
+    print(queue.remove(), end=', ')
 print()
