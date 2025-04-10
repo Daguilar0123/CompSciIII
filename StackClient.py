@@ -9,8 +9,14 @@ def main():
     print(stack1)
     print("\n")
 
-    expression="({}[])"
+    expression = input("Expression: ")
     print(is_valid_parentheses(expression))
+
+    print("\n")
+
+    infix_expr = input("Infix Expression: ")
+    postfix_expr = infix_to_postfix(infix_expr)
+    print(postfix_expr)
 
 def is_valid_parentheses(expression):
     stack=Stack()
@@ -25,6 +31,30 @@ def is_valid_parentheses(expression):
             stack.pop()
     return stack.isEmpty()
 
+def infix_to_postfix(expression):
+    precedence={"+":1,"-":1,"*":2,"/":2}
+    output=[]
+    stack2=Stack()
+
+    tokens=expression.split()
+    for token in tokens:
+        if token.isdigit():
+            output.append(token)
+        elif token =="(":
+            stack2.push(token)
+        elif token==")":
+            while not stack2.isEmpty() and stack2.peek() != "(":
+                output.append(stack2.pop())
+            stack2.pop()
+        else:
+            while (not stack2.isEmpty() and stack2.peek() != "(" and
+                   precedence.get(token,0)<=precedence.get(stack2.peek(),0)):
+                output.append(stack2.pop())
+            stack2.push(token)
+    while not stack2.isEmpty():
+        output.append(stack2.pop())
+    return ''.join(output)
+                
 
 if __name__ == "__main__":
     main()
