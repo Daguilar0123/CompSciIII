@@ -33,3 +33,19 @@ def peek(self):                         # Return frontmost item
     return None if self.isEmpty() else self.__que[self.__front] # Unless que is empty
 
 def isEmpty(self): return self.__nItems == 0
+
+def isFull(self): return self.__nItems == self.maxSize
+
+def __len__(self): return self.__nItems
+
+def __str__(self):
+    ans = "["
+    for i in range(self.__nItems):
+        if len(ans) > 1:
+            ans += ","
+        j = i + self.__front
+        if j >= self.__maxSize:
+            j -= self.__maxSize
+        ans += str(self.__que[j])
+    ans += "]"
+    return ans
