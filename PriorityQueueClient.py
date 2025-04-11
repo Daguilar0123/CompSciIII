@@ -1,6 +1,7 @@
 from PriorityQueue import *
 
-def first(x): return x[0]           # Use first element of item as priority
+def first(x):
+    return x[0]           # Use first element of item as priority
 
 queue = PriorityQueue(10, first)
 
