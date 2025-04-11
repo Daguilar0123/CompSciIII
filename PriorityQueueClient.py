@@ -11,3 +11,10 @@ for record in [(0, 'Ada'), (1, 'Don'), (2, 'Tim'),
 
 print('After inserting', len(queue),
       'persons on the queue, it contains:\n', queue)
+
+print('Is queue full?', queue.isFull())
+
+print('Removing items from the queue:')
+while not queue.isEmpty():
+    print(queue.remove(), end=', ')
+print()
