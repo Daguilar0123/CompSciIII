@@ -23,6 +23,8 @@ class Link(object):             # One datum in a linked list
     def __str__(self):              # Test if link is last in the chain
         return str(self.getData())
     
+def identity(x): return x           # Identity function
+    
 class LinkedList(object):       # A linked list of data elements
     def __init__(self):         # Constructor
         self.__first = None     # Reference to first Link
