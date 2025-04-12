@@ -102,3 +102,28 @@ class LinkedList(object):       # A linked list of data elements
             newDatum, link.getNext())   # new datum and remainder of list
         link.setNext(newLink)           # and insert after matching link
         return True
+    
+    def deleteFirst(self):              # Delete first Link
+        if self.isEmpty():              # Empty list? Raise an exception
+            raise Exception("Cannot delete first of empty list")
+        
+        first = self.getFirst()         # Store first Link
+        self.setFirst(first.getNext())  # Remove first link from list
+        return first.getData()          # Return first Link's data
+    
+    def delete(self, goal,              # Delete the first Link from the
+               key=identity):           # list whose key matches the goal
+        if self.isEmpty():              # Empty list? Raise an exception
+            raise Exception("Cannot delete from empty linked list")
+        
+        previous = self                         # Link or LinkedList before Link
+        while previous.getNext() is not None:   # to be deleted
+            link = previous.getNext()           # Next link after previous
+            if goal == key(link.getData()):     # If next Link matches,
+                previous.setNext(               # change the previous' next
+                    link.getNext())             # to be Link's next and return
+                return link.getData()           # data since match was found
+            previous = link                     # Advance previous to next Link
+
+        # Since loop ended without finding item, raise exception
+        raise Exception("No item with matching key found in list")
