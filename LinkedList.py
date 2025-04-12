@@ -91,3 +91,14 @@ class LinkedList(object):       # A linked list of data elements
         link = self.find(goal, key)     # Look for Link object that matches
         if link is not None:            # If found,
             return link.getData()       # return its datum
+        
+    def insertAfter(                    # Insert a new datum after the first
+            self, goal, newDatum,       # Link with a matching key
+            key=identity):
+        link = self.find(goal, key)     # Find matching Link object
+        if link is None:                # If not found,
+            return False                # return failure
+        newLink = Link(                 # Else build a new Link node with
+            newDatum, link.getNext())   # new datum and remainder of list
+        link.setNext(newLink)           # and insert after matching link
+        return True
