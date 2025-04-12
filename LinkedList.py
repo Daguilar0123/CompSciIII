@@ -61,7 +61,7 @@ class LinkedList(object):       # A linked list of data elements
         while link is not None:     # Keep going until no more links
             l += 1                  # Count Link in chain
             link = link.getNext()   # Move on to next l'ink
-        return 1
+        return l
     
     def __str__(self):              # Build a string representation
         result ="["                 # Enclose list in square brackets
