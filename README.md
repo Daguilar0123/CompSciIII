@@ -1,6 +1,6 @@
 Data Structures & Algorithms in Python – Course Progress Repository
 
-This repository documents my progress through a Data Structures and Algorithms course based on the textbook Data Structures & Algorithms in Python (2022).
+This repository documents my progress through a Data Structures and Algorithms course at Rockland Community College, based on the textbook Data Structures & Algorithms in Python (2022).
 It contains Python code examples that I transcribed from the textbook. Although the original examples were mostly verbatim from the book, I encountered
 several challenges along the way—typos, missing text, and incomplete examples—that required troubleshooting and modification until the code worked as intended.
 
