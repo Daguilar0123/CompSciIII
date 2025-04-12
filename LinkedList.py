@@ -72,3 +72,22 @@ class LinkedList(object):       # A linked list of data elements
             result += str(link)     # Append string version of link
             link = link.getNext()   # Move on to next link
         return result + "]"         # Close with square bracket
+    
+    def insert(self, datum):            # Insert a new datum at start of list
+        link = Link(datum,              # Make a new Link for the datum
+                    self.getFirst())    # What follows is the current list
+        self.setFirst(link)             # Update list to include new Link
+
+    def find(                           # Find the 1st Link whose key matches
+            self, goal, key=identity):  # the goal
+        link = self.getFirst()          # Start at first link
+        while link is not None:         # Search until the end of the list
+            if key(link.getData()) == goal:     # Does this Link match?
+                return link             # If so, return the Link itself
+            link = link.getNext()       # Else, continue on along list
+
+    def search(                         # Find 1st item whose key matches goal
+            self, goal, key=identity):
+        link = self.find(goal, key)     # Look for Link object that matches
+        if link is not None:            # If found,
+            return link.getData()       # return its datum
