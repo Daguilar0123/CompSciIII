@@ -20,7 +20,7 @@ class Link(object):             # One datum in a linked list
     def isLast(self):               # Test if link is last in the chain
         return self.__next is None  # True if & only if no next Link
     
-    def __str__(self):              # Test if link is last in the chain
+    def __str__(self):              # Make a string representation of link
         return str(self.getData())
     
 def identity(x): return x           # Identity function
