@@ -6,8 +6,8 @@ class Array(object):
         self.nItems = 0                             # No items in array initially
 
     def insert(self, item):                         # Insert item at end
-        self.__a[self.__nItems] = item              # Item goes at current end
-        self.__nItems += 1                          # Increment number of items
+        self.__a[self.nItems] = item              # Item goes at current end
+        self.nItems += 1                          # Increment number of items
 
     def search(self, item):
         for j in range(self.nItems):                # Search among current
