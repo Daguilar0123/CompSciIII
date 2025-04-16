@@ -44,12 +44,7 @@ class OrderedArray(object):
         index = self.find(item)                 # Search for item
         if index < self.__nItems and self.__a[index]==item:
             return self.__a[index]              # and return item if found
-        
-    def insert(self, item):             # Insert item into correct position
-        if self.__nItems >= len(self.__a):          # If array is full
-            raise Exception("Array overflow")       # raise exception
-        index = self.find(item)                     # Find index where item should go
-        for j in range
+
     def insert(self, item): # Insert item into correct position
         if self.__nItems >= len(self.__a): # If array is full,
             raise Exception("Array overflow") # raise exception
