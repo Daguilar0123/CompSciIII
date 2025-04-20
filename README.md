@@ -54,7 +54,3 @@ the book and my improvements along the way.
 License
 
 This repository is provided for educational purposes. Feel free to use, modify, and build upon the code as part of your own learning or teaching endeavors.
-
-⸻
-
-Feel free to adjust the sections or wording to better match your personal narrative or additional project details.
