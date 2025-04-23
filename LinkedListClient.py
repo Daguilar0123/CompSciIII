@@ -10,6 +10,11 @@ def main():
     ll.insert("Third Element")
 
     print(ll)
+    print(ll.first())
+    ll.insertAfter("Third Element", "2a")
+    print(ll)
+    ll.delete("First Element")
+    print(ll)
 
 if __name__=="__main__":
     main()

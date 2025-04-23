@@ -2,6 +2,9 @@ class Link(object):             # One datum in a linked list
     def __init__(self, data, next=None):         # Constructor
         self.__data = data      # The datum for this link
         self.__next = next      # Reference to the next Link
+                                # When the first datum is inserted into the LinkedList
+                                # Next is none. Each subsequent new Link will have a
+                                # reference to the previous link object as its 'next' value.
 
     def getData(self):          # Return the datum stored in this link
         return self.__data
@@ -44,7 +47,7 @@ class LinkedList(object):       # A linked list of data elements
         return self.getFirst() is None # True if & only if no 1st Link
     
     def first(self):                # Return the first item in the list
-        if self.isEmpty():          # as l;ong as it is not empty
+        if self.isEmpty():          # as long as it is not empty
             raise Exception('No first item in empty list')
         return self.getFirst().getData()    # Return data item (not Link)
     
@@ -76,6 +79,8 @@ class LinkedList(object):       # A linked list of data elements
     def insert(self, datum):            # Insert a new datum at start of list
         link = Link(datum,              # Make a new Link for the datum
                     self.getFirst())    # What follows is the current list
+                                        # Arguments for new Link are the datum to insert
+                                        # the existing first Link object or None if none exists
         self.setFirst(link)             # Update list to include new Link
 
     def find(                           # Find the 1st Link whose key matches
