@@ -27,6 +27,8 @@ def main():
     elif x>=1 and x % 2 != 0:
         print(ll2.delete(str(x-1)))
     print(ll2)
+    found = ll2.find(input("Enter the element you want to find: " ))
+    print(found)
 
 if __name__=="__main__":
     main()
