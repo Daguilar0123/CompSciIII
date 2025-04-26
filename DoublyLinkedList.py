@@ -40,8 +40,8 @@ class DoublyLinkedList(LinkedList.LinkedList):
             if (self.__last is None or  # If list was empty or
                 link is None):          # list is being truncated
                 self.__last = link      # update both ends
-            else:
-                raise Exception("First link must be Link or None")
+        else:
+            raise Exception("First link must be Link or None")
             
     def setLast(self, link):            # Set last link
         if link is None or isinstance(link, Link):  # Check type
