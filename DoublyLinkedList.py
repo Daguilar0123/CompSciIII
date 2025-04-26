@@ -25,6 +25,8 @@ class Link(LinkedList.Link):            # One datum in a linked list
         
     def isFirst(self): return self.__previous is None
 
+def identity(x): return x           # Identity function
+
 class DoublyLinkedList(LinkedList.LinkedList):
     def __init__(self):             # Constructor
         self.__first, self.__last = None, None
@@ -94,3 +96,37 @@ class DoublyLinkedList(LinkedList.LinkedList):
         if self.getLast():          # If that leaves a link in the list,
             self.getLast().setNext(None)    # Update its successor
         return last.getData()       # Return data from last link
+    
+    def insertAfter(                # Insert a new datum after the
+            self, goal, newDatum,   # first Link with a matching key
+            key=identity):
+        link = self.find(goal, key) # Find matching Link object
+        if link is None:            # If not found,
+            return False            # return failure
+        if link.isLast():           # If matching Link is last,
+            self.insertLast(newDatum)   # then insert at end
+        else:
+            newLink = Link(         # Else build a new Link node with
+                newDatum,           # the new datum that comes just
+                previous=link,      # after the matching link and
+                next=link.getNext())    # before the remaining list
+            link.getNext().setPrevious( # Splice in reverse link
+                newLink)            # from link after matching link
+            link.setNext(newLink)   # Add newLink to list
+        return True
+    
+    def delete(self, goal,          # Delete the first Link from the
+               key=identity):       # list whose key matches the goal
+        link = self.find(goal, key) # Find matching Link object
+        if link is None:            # If not found, raise exception
+            raise Exception("Cannot find link to delete in list")
+        if link.isLast():           # If matching Link is last,
+            return self.deleteLast()    # then delete from end
+        elif link.isFirst():        # If matching Link is first,
+            return self.deleteFirst()   # then delete from front
+        else:                       # Otherwise it's a middle link
+            link.getNext().setPrevious( # Set next link's previous
+                link.getPrevious())     # to link preceding the match
+            link.getPrevious().setNext( # Set previous link's next
+                link.getNext())         # to link following the match
+            return link.getData()   # Return deleted data item
