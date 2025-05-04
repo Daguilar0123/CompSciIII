@@ -45,3 +45,27 @@ class Mergesort(object):                # An object to mergesort Arrays
                     return              # then everything is done
                 self.__todo.peek()[1] = lo  # Otherwise, signal caller
         raise Exception('Empty stack in mergesort')
+
+    def merge(self, lo, mid, hi):
+        # Merge two sorted subranges [lo, mid) and [mid, hi)
+        n, idxLo, idxHi = 0, lo, mid
+        # 1) Merge until one subrange is exhausted
+        while idxLo < mid and idxHi < hi:
+            itemLo = self.__arr.get(idxLo)
+            itemHi = self.__arr.get(idxHi)
+            if self.__key(itemLo) <= self.__key(itemHi):
+                self.__work.set(n, itemLo)
+                idxLo += 1
+            else:
+                self.__work.set(n, itemHi)
+                idxHi += 1
+            n += 1
+        # 2) Copy any remaining lower-half items
+        while idxLo < mid:
+            self.__work.set(n, self.__arr.get(idxLo))
+            idxLo += 1
+            n += 1
+        # 3) Copy merged items back into original array in reverse order
+        while n > 0:
+            n -= 1
+            self.__arr.set(lo + n, self.__work.get(n))
