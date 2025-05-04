@@ -13,6 +13,8 @@ class Mergesort(object):                # An object to mergesort Arrays
         for i in range(n):              # is needed to rearrange the items
             self.__work.insert(None)    # Work array is filled with None
         self.__todo = LinkStack()       # Stack to manage subproblems
+        # seed stack with initial full-range sort task
+        self.__todo.push([0, None, n])
         self.mergesort()                # Call mergesort on problem
 
     def mergesort(self):                # Perform mergesort on subrange
