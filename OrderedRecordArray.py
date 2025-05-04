@@ -44,6 +44,23 @@ class OrderedRecordArray(object):
                 hi = mid - 1               # No, but could be in lower half
         return lo                          # Item not found, return insertion point instead
 
+    def find_recursive(self, key,           # Find index at or just below key
+                       lo = 0,              # in ordered list between lo
+                       hi = None):          # and hi using recursion
+        if hi is None:                      # If hi was not provided,
+            hi = self.__nItems - 1          # use upper bound of array
+        if lo > hi:                         # If range is empty,
+            return lo                       # return lo for base case
+        mid = (lo + hi) // 2                # Select the midpoint
+        if self.__key(self.__a[mid]) == key:    # Did we find it?
+            return mid                      # Return location of item
+        if self.__key(self.__a[mid]) < key: # Is key in upper half?
+            return self.find_recursive(     # then recursively search
+                key, mid + 1, hi)           # in upper half
+        else:                               # Otherwise, it must be in
+            return self.find_recursive(     # lower half so recursively
+                key, lo, mid - 1)           # search below mid
+
     def search(self, key):
         idx = self.find(key)                # Search for a record by its key
         if idx < self.__nItems and self.__key(self.__a[idx]) == key:
