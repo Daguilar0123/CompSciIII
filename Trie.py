@@ -114,3 +114,25 @@ class Trie:
                     dp[i-1][j-1] + cost     # substitution
                 )
         return dp[m][n]
+    
+    def autocorrect(self, word, max_suggestions, max_distance):
+        """
+        Naïve autocorrect: for each stored word (from all_words),
+        compute edit_distance and collect those within max_distance.
+        Similar to sorting query results.
+        """
+        candidates = []
+        for w in self.all_words():
+            d = self.edit_distance(word, w)
+            if d <= max_distance:
+                candidates.append((d, w))
+        # sort by (distance, word)
+        candidates.sort()
+        results = []
+        count = 0
+        for d, w in candidates:
+            if count >= max_suggestions:
+                break
+            results.append(w)
+            count += 1
+        return results
