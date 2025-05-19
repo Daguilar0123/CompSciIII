@@ -19,12 +19,21 @@ class Trie:
     Trie with insert/search and 
     """
     # constructor
-    def __init__(self, word):
+    def __init__(self):
         # root is like the head of a linked list or the root of a BST.
         self.root = TrieNode()
         
+    def insert(self, word):
         """
         Insert a word: similar to push() in SimpleStack,
         but we traverse/extend the path character by character.
         """
-        
+        node = self.root
+        for ch in word:
+            # If this character-path doesn't exist, create a new node:
+            # like allocating a new ListNode when building a linked list.
+            if ch not in node.children:
+                node.children[ch] = TrieNode()
+            node = node.children[ch]
+        #Mark the end-just like setting a flag at the top of the stack.
+        node.is_end = True
