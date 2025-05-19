@@ -45,3 +45,10 @@ class Trie:
         """
         node = self._find_node(word)
         return node is not None and node.is_end
+    
+    def starts_with(self, prefix):
+        """
+        Prefix check: reuses the same traversal as search(),
+        similar to how we shared code between pop() and peek().
+        """
+        return self._find_node(prefix) is not None
