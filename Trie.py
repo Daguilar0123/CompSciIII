@@ -136,3 +136,23 @@ class Trie:
             results.append(w)
             count += 1
         return results
+    
+def main():
+    # 1) Build the trie—mirror SimpleStackClient.py
+    words = ["to", "tea", "ten", "in", "inn", "cat", "cot", "cut", "dog", "dot"]
+    t = Trie()
+    for w in words:
+        t.insert(w)
+
+    # 2) Test inputs—same for-loop style as DelimiterChecker or StackClient from book.
+    tests = ["te", "teh", "inn", "dug", "dt"]
+    for w in tests:
+        exact = t.search(w)
+        suggestions = t.autocorrect(w, 3, 1)
+        print("input:", w)
+        print(" exact match?", exact)
+        print(" autocorrect ->", suggestions)
+        print("-" * 40)
+
+if __name__=="__main__":
+    main()
