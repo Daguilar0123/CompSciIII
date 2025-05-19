@@ -52,3 +52,17 @@ class Trie:
         similar to how we shared code between pop() and peek().
         """
         return self._find_node(prefix) is not None
+    
+    def _find_node(self, s):
+        """
+        Helper to walk s character-by-character, like stepping through a stack
+        or list.
+        Returns the final node or None if any step fails.
+        """
+        node = self.root
+        for ch in s:
+            if ch in node.children:
+                node = node.children[ch]
+            else:
+                return None
+        return node
