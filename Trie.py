@@ -66,3 +66,11 @@ class Trie:
             else:
                 return None
         return node
+    
+    def all_words(self):
+        """
+        Collect every word via DFS-just like our graph DFS using a stack.
+        Returns a Python list of strings."""
+        results = []
+        self._collect_all(self.root, "", results)
+        return results
