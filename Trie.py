@@ -17,3 +17,13 @@ class Trie:
     """
     Trie with insert/search and 
     """
+    # constructor
+    def __init__(self, word):
+        # root is like the head of a linked list or the root of a BST.
+        self.root = TrieNode()
+        
+        """
+        Insert a word: similar to push() in SimpleStack,
+        but we traverse/extend the path character by character.
+        """
+        
