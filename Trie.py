@@ -37,3 +37,11 @@ class Trie:
             node = node.children[ch]
         #Mark the end-just like setting a flag at the top of the stack.
         node.is_end = True
+
+    def search(self, word):
+        """
+        Exact-word lookup: like BST search, we walk down _find_node.
+        Returns True only if we end on a node marked is_end.
+        """
+        node = self._find_node(word)
+        return node is not None and node.is_end
