@@ -5,6 +5,7 @@ class TrieNode:
     A single node in the Trie-just like a ListNode in our LinkedList
     exercises.
     """
+    # constructor
     def __init__(self):
         # children is a dict mapping character → TrieNode,
         # analogous to a 'next' pointer (or multiple 'next's) in ListNode.
