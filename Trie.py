@@ -74,3 +74,13 @@ class Trie:
         results = []
         self._collect_all(self.root, "", results)
         return results
+    
+    def _collect_all(self, node, path, results):
+        """
+        Recursive tree traversal (like in the BST from class):
+        if node.is_end, record the path; then recurse on each child.
+        """
+        if node.is_end:
+            results.append(path)
+        for ch in node.children:
+            self._collect_all(node.children[ch], path + ch, results)
