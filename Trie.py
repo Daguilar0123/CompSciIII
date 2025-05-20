@@ -148,10 +148,17 @@ def main():
     tests = ["te", "teh", "inn", "dug", "dt"]
     for w in tests:
         exact = t.search(w)
-        suggestions = t.autocorrect(w, 3, 1)
+        # if we already have an exact match, skip autocorrect
+        if exact:
+            suggestions = []
+        else:
+            suggestions = t.autocorrect(w, 3, 1)
         print("input:", w)
         print(" exact match?", exact)
-        print(" autocorrect ->", suggestions)
+        if exact:
+            print(" autocorrect -> <skipped, exact match>")
+        else:
+            print(" autocorrect ->", suggestions)
         print("-" * 40)
 
 if __name__=="__main__":
