@@ -138,13 +138,13 @@ class Trie:
     
 def main():
     # 1) Build the trie—mirror SimpleStackClient.py
-    words = ["to", "tea", "ten", "in", "inn", "cat", "cot", "cut", "dog", "dot"]
+    words = ["to", "tea","teal", "ten", "in", "inn", "cat", "cot", "cut", "dog", "dot"]
     t = Trie()
     for w in words:
         t.insert(w)
 
     # 2) Test inputs—same for-loop style as DelimiterChecker or StackClient from book.
-    tests = ["te", "teh", "inn", "dug", "dt"]
+    tests = ["te", "teaa", "teh", "inn", "dug", "dt"]
     for w in tests:
         exact = t.search(w)
         if exact:
