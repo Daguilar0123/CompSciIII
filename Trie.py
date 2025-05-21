@@ -87,8 +87,7 @@ class Trie:
 
     def edit_distance(self, a, b):
         """
-        Levenshtein distance via a 2D DP table—mirrors how we built tables
-        in the sequence‐alignment assignment (matrix of size (m+1)x(n+1)).
+        Levenshtein distance via a 2D DP table - (matrix of size (m+1)x(n+1)).
         """
         m = len(a)
         n = len(b)
@@ -148,18 +147,33 @@ def main():
     tests = ["te", "teh", "inn", "dug", "dt"]
     for w in tests:
         exact = t.search(w)
-        # if we already have an exact match, skip autocorrect
         if exact:
             suggestions = []
         else:
             suggestions = t.autocorrect(w, 3, 1)
+
         print("input:", w)
         print(" exact match?", exact)
-        if exact:
-            print(" autocorrect -> <skipped, exact match>")
+
+        if not exact:
+            print(" autocorrect suggestions:")
+            for cand in suggestions:
+                d = t.edit_distance(w, cand)
+                # classify single‐edit operations
+                if d == 1:
+                    if len(cand) > len(w):
+                        op = "insertion"
+                    elif len(cand) < len(w):
+                        op = "deletion"
+                    else:
+                        op = "substitution"
+                else:
+                    op = f"{d} edits"
+                print(f"  - {cand!r}: # of single-character edits (distance) = {d}, operation = {op}")
         else:
-            print(" autocorrect ->", suggestions)
+            print(" autocorrect -> <skipped, exact match>")
+
         print("-" * 40)
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()
