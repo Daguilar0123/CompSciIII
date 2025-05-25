@@ -173,7 +173,7 @@ def main():
         else:
             print(" autocorrect -> <skipped, exact match>")
 
-        print("-" * 40)
+        print("-" * 90)
 
 if __name__ == "__main__":
     main()
